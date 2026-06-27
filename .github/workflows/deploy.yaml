@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -18,7 +18,7 @@ jobs:
           username: root
           key: ${{secrets.SSH_KEY}}
           script: |
-            cd /home/
-            git pull
+            cd /home/nodejs-application
+            git pull origin main
             docker compose up -d --build
 
